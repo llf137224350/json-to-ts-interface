@@ -1,6 +1,6 @@
 {
   "name": "json-to-ts-interface",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "根据json字符串自动生成TypeScript interface定义",
   "main": "index.js",
   "scripts": {
