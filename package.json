@@ -1,5 +1,5 @@
 {
-  "name": "json-2-ts-interface",
+  "name": "json-to-ts-interface",
   "version": "1.0.0",
   "description": "根据json字符串自动生成TypeScript interface定义",
   "main": "index.js",
@@ -19,6 +19,9 @@
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/llf137224350/json-2-ts-interface/issues"
+  },
+  "publishConfig": {
+    "access": "public"
   },
   "homepage": "https://github.com/llf137224350/json-2-ts-interface#readme",
   "devDependencies": {
