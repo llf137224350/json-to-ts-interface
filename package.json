@@ -21,7 +21,8 @@
     "url": "https://github.com/llf137224350/json-to-ts-interface/issues"
   },
   "publishConfig": {
-    "access": "public"
+    "access": "public",
+    "registry":"https://npm.pkg.github.com"
   },
   "homepage": "https://github.com/llf137224350/json-to-ts-interface#readme",
   "devDependencies": {
