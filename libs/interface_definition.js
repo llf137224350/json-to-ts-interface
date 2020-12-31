@@ -4,7 +4,7 @@ let Config = {
   export: 2, // export
   exportDefault: 3, // export default
   globalExportMode: 1, // 默认don't export
-  linkBreak: '\n', // 换行符
+  lineBreak: '\n', // 换行符
   indent: '  ', // 缩进 默认两个空格
   interfaceName: 'Result', // 导出第一级名称
   interfaceNamePrefix: 'I',// 接口名称前缀
@@ -70,11 +70,11 @@ function __getRenderInterfaceName(name) {
 }
 
 function _getRenderLeft() {
-  return `{${Config.linkBreak}`;
+  return `{${Config.lineBreak}`;
 }
 
 function _getRenderRight() {
-  return `}${Config.linkBreak}`
+  return `}${Config.lineBreak}`
 }
 
 function _getRenderKey(key) {
@@ -82,7 +82,7 @@ function _getRenderKey(key) {
 }
 
 function _getRenderValue(value) {
-  return ` ${value};${Config.linkBreak}`;
+  return ` ${value};${Config.lineBreak}`;
 }
 
 /**
@@ -169,7 +169,7 @@ function _parseJson(json, name, inters, first = true, ind = Config.indent) {
     } else if (json[key] instanceof Object) {
       // inters += `${ind}${_getRenderKey(key)}: ${_parseJson(json[key], key, '', false, ind + ind)}`;
       const interfaceName = _getInterfaceName(key)
-      inters += `${Config.indent}${_getRenderKey(key)}: ${interfaceName};${Config.linkBreak}`;
+      inters += `${Config.indent}${_getRenderKey(key)}: ${interfaceName};${Config.lineBreak}`;
       objs.push({
         key: interfaceName,
         value: json[key]
@@ -200,7 +200,7 @@ module.exports = function interfaceDefinition(res, options = {}) {
     const json = typeof  res === 'string' ? JSON.parse(res) : res;
     result = _parseJson(json, _getInterfaceName(Config.interfaceName), '', true);
     for (const obj of objs) {
-      result += Config.linkBreak
+      result += Config.lineBreak
       result += _parseJson(obj.value, obj.key, '', true);
     }
   } catch (e) {

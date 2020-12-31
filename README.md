@@ -12,7 +12,7 @@ const res = interfaceDefinition(json对象||json字符串, {})
 
 {
   globalExportMode: 1,      // 默认 don't export  1 = don't export 2 =  export 3 = export default
-  linkBreak: '\n',          // 换行符
+  lineBreak: '\n',          // 换行符
   indent: '  ',             // 缩进 默认两个空格
   interfaceName: 'Result',  // 导出第一级名称
   interfaceNamePrefix: 'I' ,// 接口名称前缀
