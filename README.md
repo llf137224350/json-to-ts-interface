@@ -1,9 +1,9 @@
-# json-2-ts-interface
+# json-to-ts-interface
 根据json字符串自动生成TypeScript interface定义
 
 **使用方式：**
 ````
-const interfaceDefinition = require('json-2-ts-interface');
+const interfaceDefinition = require('json-to-ts-interface');
 const res = interfaceDefinition(json对象||json字符串, {})
 ````
 **参数配置：**
@@ -11,10 +11,7 @@ const res = interfaceDefinition(json对象||json字符串, {})
 方法第二个参数接收一个对象，对象内容如下：
 
 {
-  notExport: 1,             // don't export
-  export: 2,                // export
-  exportDefault: 3,         // export default
-  globalExportMode: 1,      // 默认don't export
+  globalExportMode: 1,      // 默认 don't export  1 = don't export 2 =  export 3 = export default
   linkBreak: '\n',          // 换行符
   indent: '  ',             // 缩进 默认两个空格
   interfaceName: 'Result',  // 导出第一级名称

@@ -188,7 +188,7 @@ function _parseJson(json, name, inters, first = true, ind = Config.indent) {
  * 导出接口定义
  * @param res json字符串
  * @param options
- * @returns {*}
+ * @returns {*} 结果
  */
 module.exports = function interfaceDefinition(res, options = {}) {
   // 合并全局配置
