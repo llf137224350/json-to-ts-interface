@@ -9,15 +9,16 @@ const res = interfaceDefinition(json对象||json字符串, {})
 **参数配置：**
 ````
 方法第二个参数接收一个对象，对象内容如下：
+
 {
-  notExport: 1, // don't export
-  export: 2, // export
-  exportDefault: 3, // export default
-  globalExportMode: 1, // 默认don't export
-  linkBreak: '\n', // 换行符
-  indent: '  ', // 缩进 默认两个空格
-  interfaceName: 'Result', // 导出第一级名称
-  interfaceNamePrefix: 'I',// 接口名称前缀
+  notExport: 1,             // don't export
+  export: 2,                // export
+  exportDefault: 3,         // export default
+  globalExportMode: 1,      // 默认don't export
+  linkBreak: '\n',          // 换行符
+  indent: '  ',             // 缩进 默认两个空格
+  interfaceName: 'Result',  // 导出第一级名称
+  interfaceNamePrefix: 'I' ,// 接口名称前缀
 }
 ````
 **示例：**
