@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/llf137224350/json-2-ts-interface.git"
+    "url": "git+https://github.com/llf137224350/json-to-ts-interface.git"
   },
   "keywords": [
     "json",
@@ -18,12 +18,12 @@
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/llf137224350/json-2-ts-interface/issues"
+    "url": "https://github.com/llf137224350/json-to-ts-interface/issues"
   },
   "publishConfig": {
     "access": "public"
   },
-  "homepage": "https://github.com/llf137224350/json-2-ts-interface#readme",
+  "homepage": "https://github.com/llf137224350/json-to-ts-interface#readme",
   "devDependencies": {
     "jest": "^26.6.3"
   }
