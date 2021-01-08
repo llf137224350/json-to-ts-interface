@@ -1,6 +1,6 @@
 {
   "name": "json-to-ts-interface",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "根据json字符串自动生成TypeScript interface定义",
   "main": "index.js",
   "scripts": {
@@ -15,7 +15,7 @@
     "typescript",
     "interface"
   ],
-  "author": "",
+  "author": "い 狂奔的蜗牛",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/llf137224350/json-to-ts-interface/issues"

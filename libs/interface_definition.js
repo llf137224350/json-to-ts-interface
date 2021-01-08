@@ -14,6 +14,14 @@ let Config = {
 let objs = [];
 let interfaceNames = [];
 
+function _isObject(obj) {
+  return Object.prototype.toString.call(obj) === '[object Object]'
+}
+
+function _isArray(obj) {
+  return Object.prototype.toString.call(obj) === '[object Array]'
+}
+
 /**
  * 获取接口名称
  * @param name 返回字段key
@@ -114,7 +122,7 @@ function _handleArray(json, key, inters, indent) {
     inters += `${indent}${_getRenderKey(key)}:${_getRenderValue('any[]')}`;
   } else {
     // 如果是个空数组或者数组里面为非对象
-    if (json[key][0] instanceof Array) {
+    if (_isArray(json[key][0])) {
       // 判断数组是否都为boolean number string等基本类型
       inters += `${indent}${_getRenderKey(key)}:${_getRenderValue('any[]')}`;
     } else {
@@ -164,9 +172,9 @@ function _parseJson(json, name, inters, first = true, ind = Config.indent) {
     type = typeof json[key];
     if (Config.normalTypes.includes(type)) {
       inters += `${ind}${_getRenderKey(key)}:${_getRenderValue(type)}`;
-    } else if (json[key] instanceof Array) {
+    } else if (_isArray(json[key])) {
       inters = _handleArray(json, key, inters, ind);
-    } else if (json[key] instanceof Object) {
+    } else if (_isObject(json[key])) {
       // inters += `${ind}${_getRenderKey(key)}: ${_parseJson(json[key], key, '', false, ind + ind)}`;
       const interfaceName = _getInterfaceName(key)
       inters += `${Config.indent}${_getRenderKey(key)}: ${interfaceName};${Config.lineBreak}`;
@@ -197,7 +205,7 @@ module.exports = function interfaceDefinition(res, options = {}) {
   objs = [];
   interfaceNames = [];
   try {
-    const json = typeof  res === 'string' ? JSON.parse(res) : res;
+    const json = typeof res === 'string' ? JSON.parse(res) : res;
     result = _parseJson(json, _getInterfaceName(Config.interfaceName), '', true);
     for (const obj of objs) {
       result += Config.lineBreak
