@@ -70,7 +70,7 @@ function _getRenderInterface(name) {
     name === Config.interfaceNamePrefix + Config.interfaceName) { // export default 只能导出第一级
     return `${Config.globalExportMode === Config.export ? 'export ' : Config.globalExportMode === Config.exportDefault ? 'export default ' : ''}interface`;
   }
-  return `${Config.globalExportMode === Config.export ? 'export ' : ''}interface;`
+  return `${Config.globalExportMode === Config.export ? 'export ' : ''}interface`
 }
 
 function __getRenderInterfaceName(name) {
