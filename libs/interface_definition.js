@@ -8,7 +8,7 @@ let Config = {
   indent: '  ', // 缩进 默认两个空格
   interfaceName: 'Result', // 导出第一级名称
   interfaceNamePrefix: 'I',// 接口名称前缀
-  normalTypes: ['string', 'number', 'boolean'] // 基本类型
+  normalTypes: ['string', 'number', 'boolean', 'undefined'] // 基本类型
 }
 // 处理数组
 let objs = [];
@@ -155,7 +155,12 @@ function _handleArray(json, key, inters, indent) {
  * @returns {*}
  */
 function _parseJson(json, name, inters, first = true, ind = Config.indent) {
-  const keys = Reflect.ownKeys(json);
+  let keys = [];
+  try {
+    keys = Reflect.ownKeys(json);
+  } catch (e) {
+    console.log(e);
+  }
   if (!keys.length) { // 判断是否有key
     inters += `${_getRenderInterface(name)} ${__getRenderInterfaceName(name)} ${_getRenderLeft()}`
     inters += _getRenderRight();
@@ -170,8 +175,8 @@ function _parseJson(json, name, inters, first = true, ind = Config.indent) {
   for (const key of keys) {
     // 判断值类型
     type = typeof json[key];
-    if (Config.normalTypes.includes(type)) {
-      inters += `${ind}${_getRenderKey(key)}:${_getRenderValue(type)}`;
+    if (Config.normalTypes.includes(type) || json[key] === null) {
+      inters += `${ind}${_getRenderKey(key)}:${_getRenderValue(json[key] === null ? 'null' : type)}`;
     } else if (_isArray(json[key])) {
       inters = _handleArray(json, key, inters, ind);
     } else if (_isObject(json[key])) {
@@ -205,7 +210,7 @@ module.exports = function interfaceDefinition(res, options = {}) {
   objs = [];
   interfaceNames = [];
   try {
-    const json = typeof res === 'string' ? JSON.parse(res) : res;
+    const  json = typeof res === 'string' ? eval(`(${res})`) : res;
     result = _parseJson(json, _getInterfaceName(Config.interfaceName), '', true);
     for (const obj of objs) {
       result += Config.lineBreak

@@ -1,6 +1,10 @@
 # json-to-ts-interface
 根据json字符串自动生成TypeScript interface定义
 
+**bug修复**
+* 修复无法传入js对象字符串形式（非json对象）
+* 修复属性值为null是，未能生成interface属性定义bug
+
 **使用方式：**
 ````
 const interfaceDefinition = require('json-to-ts-interface');

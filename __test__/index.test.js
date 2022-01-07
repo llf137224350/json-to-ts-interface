@@ -29,7 +29,7 @@ test('json对象嵌套', () => {
   obj: IObj;
 }
 
-interface; IObj {
+interface IObj {
   name: string;
   age: number;
 }
@@ -46,14 +46,39 @@ test('复杂json对象', () => {
   reward_buyers:  IRewardBuyers[];
 }
 
-interface; ISetting {
+interface ISetting {
   description: string;
   default_amount: number;
 }
 
-interface; IRewardBuyers {
+interface IRewardBuyers {
   avatar: string;
   slug: string;
+}
+`)
+});
+
+test('js对象', () => {
+  const interfaceDefinition = require('../');
+  const obj = {
+    userName: null,
+    age: undefined
+  };
+  expect(interfaceDefinition(obj)).toBe(`interface IResult {
+  userName: null;
+  age: undefined;
+}
+`)
+});
+test('js对象字符串', () => {
+  const interfaceDefinition = require('../');
+  const obj = `{
+    userName: null,
+    age: undefined
+  }`;
+  expect(interfaceDefinition(obj)).toBe(`interface IResult {
+  userName: null;
+  age: undefined;
 }
 `)
 });
